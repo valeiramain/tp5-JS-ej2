@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background-image: url("/img/pexels-markusspiske-1089438.jpg"); */
+  background-image: url("/img/pexels-tara-winstead-7111530.jpg");
+  background-repeat: no-repeat; /* Que no se repita */
+  background-size: cover; /* Que ocupe toda la pantalla */
+  background-position: center; /* Centrar la imagen */
+}
+
+main {
+  flex-grow: 1;
+}
+
+
+.form-magico {
+  background-color: rgba(178, 178, 176, 0.4); /* con 40% de opacidad */
+  padding: 20px;
+  border-radius: 10px;
+  /* display: inline-block; */
+}
