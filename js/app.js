@@ -76,6 +76,7 @@ class Persona {
 
     // metodos
 
+
     mostrarGeneracion() {
         let generacion = ''
         let rasgo = ''
@@ -102,9 +103,9 @@ class Persona {
             rasgo = 'Austeridad'
         }
 
-        if (generacion!=='' && rasgo !==''){
+        if (generacion !== '' && rasgo !== '') {
             document.writeln(`<p>El Año de nacimiento: ${this.#anioNac}, pertenece a la generación: "${generacion}" y su rasgo característico es: "${rasgo}" </p>`)
-        } 
+        }
 
     }
 
@@ -128,18 +129,33 @@ class Persona {
             <li><p>Año de Nacimiento: ${this.#anioNac}</p></li>
             </ul>`)
     }
-
-    generarDNI() {
-        // Número aleatorio de 8 cifras
-        let numeroAleatorio = Math.floor(10000000 + Math.random() * 90000000);
-        console.log(numeroAleatorio);
-        this.#dni = numeroAleatorio;
-        document.writeln(`<p>Nuevo DNI: ${this.dni}</p>`)
-    }
 }
 
-const persona1 = new Persona('Valentina Iramain', 53, '22414369', 'M', 53, 160, 1972)
-persona1.mostrarGeneracion()
-persona1.esMayorDeEdad()
-persona1.generarDNI()
-console.log(persona1)
+
+function crearPersona(e) {
+    e.preventDefault();
+    console.log('en crear persona')
+
+    const nombre = document.getElementById('nombreYApellido').value
+    const edad = document.getElementById('edad').value
+    const dni = document.getElementById('dni').value
+    const sexo = document.getElementById('sexo').value
+    const peso = document.getElementById('peso').value
+    const altura = document.getElementById('altura').value
+    const fechaNac = document.getElementById('fechaNac').value
+    
+    const datosPersona = new Persona(nombre,edad,dni,sexo,peso,altura,fechaNac)
+    console.log(datosPersona)
+}
+
+//*************DOM*************** */
+//desde js
+const formulario = document.querySelector('form')
+console.log(formulario)
+
+formulario.addEventListener('submit', crearPersona)
+
+// const persona1 = new Persona('Valentina Iramain', 53, '22414369', 'M', 53, 160, 1972)
+// persona1.mostrarGeneracion()
+// persona1.esMayorDeEdad()
+// console.log(persona1)

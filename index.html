@@ -47,23 +47,27 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="peso" class="form-label">Peso:</label>
                     <input type="number" class="form-control" id="peso">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="altura" class="form-label">Altura:</label>
                     <input type="number" class="form-control" id="altura">
                 </div>
+                <div class="col-md-4">
+                    <label for="fechaNac" class="form-label">Fecha Nac:</label>
+                    <input type="date" class="form-control" id="fechaNac">
+                </div>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-secondary text-dark shadow glow-btn">Enviar</button>
+            <div class="text-center d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-secondary text-dark shadow glow-btn fw-bold">Enviar</button>
             </div>
         </form>
 
-        <section class="d-grid gap-2 d-md-block my-3 text-center form-generaciones ">
-            <button type="button" class="btn shadow glow-btn">Mostrar Generación</button>
-            <button type="button" class="btn shadow glow-btn">Mayor de Edad</button>
+        <section class="d-grid gap-5 d-md-block my-3 text-center form-generaciones ">
+            <button type="button" class="btn shadow glow-btn fw-bold">Mostrar Generación</button>
+            <button type="button" class="btn shadow glow-btn fw-bold">Mayor de Edad</button>
         </section>
 
         <section class="d-grid gap-2 my-3 text-center form-generaciones " id="resultados">
