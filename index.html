@@ -56,8 +56,8 @@
                     <input type="number" class="form-control" id="altura">
                 </div>
                 <div class="col-md-4">
-                    <label for="fechaNac" class="form-label">Fecha Nac:</label>
-                    <input type="date" class="form-control" id="fechaNac">
+                    <label for="anioNac" class="form-label">Año de Nac:</label>
+                    <input type="number" class="form-control" id="anioNac">
                 </div>
             </div>
             <div class="text-center d-grid gap-2 col-6 mx-auto">
@@ -66,30 +66,21 @@
         </form>
 
         <section class="d-grid gap-5 d-md-block my-3 text-center form-generaciones ">
-            <button type="button" class="btn shadow glow-btn fw-bold">Mostrar Generación</button>
-            <button type="button" class="btn shadow glow-btn fw-bold">Mayor de Edad</button>
+            <button type="button" class="btn shadow glow-btn fw-bold" id="btnGeneracion">Mostrar Generación</button>
+            <button type="button" class="btn shadow glow-btn fw-bold" id="btnMayorEdad">Mayor de Edad</button>
+            <button type="button" class="btn shadow glow-btn fw-bold" id="btnMostrarDatos">Mostrar Datos</button>
         </section>
 
         <section class="d-grid gap-2 my-3 text-center form-generaciones " id="resultados">
-            <div class="alert alert-primary" role="alert">
-                Pertenece a la Gereración
+            <div class="alert alert-primary d-none" role="alert" id="alertGeneracion">
+
             </div>
-            <div class="alert alert-success" role="alert">
-                Es mayor de Edad
+            <div class="alert alert-success d-none" role="alert" id="alertMayorEdad">
+
             </div>
-            <div class="alert alert-secondary" role="alert">
-                <ul class="list-group p-2 bg-secondary-subtle text-secondary-emphasis">
-                    <li class="list-group-item">nombre</li>
-                    <li class="list-group-item">nombre</li>
-                </ul>
+            <div class="alert alert-secondary d-none" role="alert" id="AlertMostrarDatos">
+
             </div>
-            <!-- <p class="p-3 mb-2 text-center bg-secondary-subtle text-secondary-emphasis fs-2">Pertenece a la Gereración -->
-            <!-- </p>
-            <p class="p-3 mb-2 text-center bg-secondary-subtle text-secondary-emphasis fs-2">Es mayor de Edad</p>
-            <ul class="list-group p-3 mb-2 bg-secondary-subtle text-secondary-emphasis">
-                <li class="list-group-item">nombre</li>
-                <li class="list-group-item">nombre</li>
-            </ul> -->
         </section>
     </main>
     <footer class="text-center py-3 bg-body-tertiary">

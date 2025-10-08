@@ -76,10 +76,11 @@ class Persona {
 
     // metodos
 
-
     mostrarGeneracion() {
-        let generacion = ''
-        let rasgo = ''
+        rasgo = '';
+        generacion = '';
+        let textoAlertGeneracion = document.getElementById('alertGeneracion')
+
         if (this.#anioNac >= 1994 && this.#anioNac <= 2010) {
             generacion = 'Generación Z'
             rasgo = 'Irreverencia'
@@ -104,30 +105,29 @@ class Persona {
         }
 
         if (generacion !== '' && rasgo !== '') {
-            document.writeln(`<p>El Año de nacimiento: ${this.#anioNac}, pertenece a la generación: "${generacion}" y su rasgo característico es: "${rasgo}" </p>`)
+            textoAlertGeneracion.classList.remove('d-none')
+            textoAlertGeneracion.textContent = `Generación: "${generacion}" - Rasgo Característico: "${rasgo}"`
         }
-
     }
 
+
     esMayorDeEdad() {
+        let textoAlertEsMayor = document.getElementById('alertMayorEdad')
+
+        textoAlertEsMayor.classList.remove('d-none')
         if (this.#edad >= 18) {
-            document.writeln(`<p>La persona es mayor de edad</p>`)
+            textoAlertEsMayor.textContent = 'La persona es Mayor de edad.'
         } else {
-            document.writeln(`<p>La persona NO es mayor de edad</p>`)
+            textoAlertEsMayor.textContent = 'La persona NO es Mayor de edad.'
         }
     }
 
     mostrarDatos() {
-        document.writeln(`<h5>Datos de la Persona</h5>`)
-        document.writeln(`<ul>
-            <li><p>Nombre: ${this.#nombre}</p></li>
-            <li><p>Edad: ${this.#edad}</p></li>
-            <li><p>DNI: ${this.#dni}</p></li>
-            <li><p>Sexo: ${this.#sexo}</p></li>
-            <li><p>Peso: ${this.#peso}</p></li>
-            <li><p>Altura: ${this.#altura}</p></li>
-            <li><p>Año de Nacimiento: ${this.#anioNac}</p></li>
-            </ul>`)
+        let textoAlertMostrarDatos = document.getElementById('AlertMostrarDatos')
+
+        textoAlertMostrarDatos.classList.remove('d-none')
+
+        textoAlertMostrarDatos.textContent = `Nombre: ${this.#nombre} - Edad: ${this.#edad} - DNI: ${this.#dni} - Sexo: ${this.#sexo} - Peso: ${this.#peso} - Altura: ${this.#altura} - Año de Nacimiento: ${this.#anioNac}`
     }
 }
 
@@ -142,20 +142,39 @@ function crearPersona(e) {
     const sexo = document.getElementById('sexo').value
     const peso = document.getElementById('peso').value
     const altura = document.getElementById('altura').value
-    const fechaNac = document.getElementById('fechaNac').value
-    
-    const datosPersona = new Persona(nombre,edad,dni,sexo,peso,altura,fechaNac)
-    console.log(datosPersona)
+    const anioNac = document.getElementById('anioNac').value
+
+    nuevaPersona = new Persona(nombre, edad, dni, sexo, peso, altura, anioNac)
+    console.log(nuevaPersona)
 }
 
+
 //*************DOM*************** */
-//desde js
+// Cuando presiona boton Enviar
 const formulario = document.querySelector('form')
 console.log(formulario)
 
+let nuevaPersona = null
 formulario.addEventListener('submit', crearPersona)
 
-// const persona1 = new Persona('Valentina Iramain', 53, '22414369', 'M', 53, 160, 1972)
-// persona1.mostrarGeneracion()
-// persona1.esMayorDeEdad()
-// console.log(persona1)
+let generacion = ''
+let rasgo = ''
+
+// eventos de botones
+document.getElementById('btnGeneracion').addEventListener('click', () => {
+    if (nuevaPersona) {
+        nuevaPersona.mostrarGeneracion()
+    }
+});
+
+document.getElementById('btnMayorEdad').addEventListener('click', () => {
+    if (nuevaPersona) {
+        nuevaPersona.esMayorDeEdad()
+    };
+});
+
+document.getElementById('btnMostrarDatos').addEventListener('click', () => {
+    if (nuevaPersona) {
+        nuevaPersona.mostrarDatos();
+    }
+});
