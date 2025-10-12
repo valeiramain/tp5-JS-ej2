@@ -16,8 +16,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container py-2">
-                <a class="navbar-brand text-primary-emphasis fw-bold" href="#">Generaciones</a>
+            <div class="container">
+                <a class="navbar-brand text-primary-emphasis fw-bold fs-2" href="#">Generaciones</a>
             </div>
         </nav>
     </header>
@@ -26,21 +26,21 @@
         <form class="form-generaciones py-3 px-4 fw-bold">
             <div class="mb-3">
                 <label for="nombreYApellido" class="form-label">Nombre y Apellido:</label>
-                <input type="text" class="form-control" id="nombreYApellido" placeholder="Juan Perez">
+                <input type="text" class="form-control" id="nombreYApellido" placeholder="Juan Perez" minlength="3" maxlength="30" required>
             </div>
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="edad" class="form-label">Edad:</label>
-                    <input type="number" class="form-control" id="edad">
+                    <input type="number" class="form-control" id="edad" placeholder="18" min="1" max="120" required>
                 </div>
                 <div class="col-md-4">
                     <label for="dni" class="form-label">DNI:</label>
-                    <input type="number" class="form-control" id="dni">
+                    <input type="number" class="form-control" id="dni" placeholder="12345678" min="1000000" max="99999999" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="sexo" class="form-label">Sexo (F ó M):</label>
-                    <select id="sexo" name="sexo" class="form-select" aria-label="Seleccione sexo">
-                        <option value="" selected disabled>Elija una opción</option>
+                    <label for="sexo" class="form-label">Sexo (F ó M):</label> 
+                    <select id="sexo" name="sexo" class="form-select" aria-label="Seleccione sexo" required>
+                        <option value="" selected disabled>Elija (F ó M):</option>
                         <option value="F">Femenino</option>
                         <option value="M">Masculino</option>
                     </select>
@@ -48,16 +48,16 @@
             </div>
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <label for="peso" class="form-label">Peso:</label>
-                    <input type="number" class="form-control" id="peso">
+                    <label for="peso" class="form-label">Peso (kg):</label>
+                    <input type="number" class="form-control" id="peso" placeholder=80 min="10" max="300" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="altura" class="form-label">Altura:</label>
-                    <input type="number" class="form-control" id="altura">
+                    <label for="altura" class="form-label">Altura (cm):</label>
+                    <input type="number" class="form-control" id="altura" placeholder=190 min="50" max="250" required>
                 </div>
                 <div class="col-md-4">
-                    <label for="anioNac" class="form-label">Año de Nac:</label>
-                    <input type="number" class="form-control" id="anioNac">
+                    <label for="anioNac" class="form-label">Año de Nac (aaaa):</label>
+                    <input type="number" class="form-control" id="anioNac" placeholder=2008 min="1900" max="2025" required>
                 </div>
             </div>
             <div class="text-center d-grid gap-2 col-6 mx-auto">

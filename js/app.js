@@ -103,8 +103,13 @@ class Persona {
             generacion = 'Silent Generation (Los niños de la postguerra)'
             rasgo = 'Austeridad'
         }
+        if (this.#anioNac < 1930) {
+            generacion = 'No tiene definida Generación'
+            rasgo = 'No tiene definido Rasgo'
+        }
 
         if (generacion !== '' && rasgo !== '') {
+            if (fondoResultados) fondoResultados.classList.remove('d-none')
             textoAlertGeneracion.classList.remove('d-none')
             textoAlertGeneracion.textContent = `Generación: "${generacion}" - Rasgo Característico: "${rasgo}"`
         }
@@ -115,6 +120,7 @@ class Persona {
         let textoAlertEsMayor = document.getElementById('alertMayorEdad')
 
         textoAlertEsMayor.classList.remove('d-none')
+        if (fondoResultados) fondoResultados.classList.remove('d-none')
         if (this.#edad >= 18) {
             textoAlertEsMayor.textContent = 'La persona es Mayor de edad.'
         } else {
@@ -126,6 +132,7 @@ class Persona {
         let textoAlertMostrarDatos = document.getElementById('AlertMostrarDatos')
 
         textoAlertMostrarDatos.classList.remove('d-none')
+        if (fondoResultados) fondoResultados.classList.remove('d-none')
 
         textoAlertMostrarDatos.textContent = `Nombre: ${this.#nombre} - Edad: ${this.#edad} - DNI: ${this.#dni} - Sexo: ${this.#sexo} - Peso: ${this.#peso} - Altura: ${this.#altura} - Año de Nacimiento: ${this.#anioNac}`
     }
@@ -146,14 +153,34 @@ function crearPersona(e) {
 
     nuevaPersona = new Persona(nombre, edad, dni, sexo, peso, altura, anioNac)
     console.log(nuevaPersona)
+    // habilitar botones ahora que ya hay objeto
+    setBotonesEnabled(true);
 }
 
+// función auxiliar para habilitar/deshabilitar botones
+function setBotonesEnabled(enabled) {
+    if (btnGeneracion) btnGeneracion.disabled = !enabled;
+    if (btnMayorEdad) btnMayorEdad.disabled = !enabled;
+    if (btnMostrarDatos) btnMostrarDatos.disabled = !enabled;
+}
 
-//*************DOM*************** */
+// ************* DOM y lógica de UI *************** //
+
 // Cuando presiona boton Enviar
 const formulario = document.querySelector('form')
 console.log(formulario)
 
+
+const btnGeneracion = document.getElementById('btnGeneracion');
+const btnMayorEdad = document.getElementById('btnMayorEdad');
+const btnMostrarDatos = document.getElementById('btnMostrarDatos');
+const fondoResultados = document.getElementById('resultados');
+if (fondoResultados) fondoResultados.classList.toggle('d-none')
+
+// al inicio deshabilitamos los botones hasta crear la persona
+setBotonesEnabled(false);
+
+//crea objeto persona
 let nuevaPersona = null
 formulario.addEventListener('submit', crearPersona)
 
@@ -161,19 +188,18 @@ let generacion = ''
 let rasgo = ''
 
 // eventos de botones
-document.getElementById('btnGeneracion').addEventListener('click', () => {
+btnGeneracion.addEventListener('click', () => {
     if (nuevaPersona) {
         nuevaPersona.mostrarGeneracion()
     }
 });
 
-document.getElementById('btnMayorEdad').addEventListener('click', () => {
+btnMayorEdad.addEventListener('click', () => {
     if (nuevaPersona) {
         nuevaPersona.esMayorDeEdad()
     };
 });
-
-document.getElementById('btnMostrarDatos').addEventListener('click', () => {
+btnMostrarDatos.addEventListener('click', () => {
     if (nuevaPersona) {
         nuevaPersona.mostrarDatos();
     }
